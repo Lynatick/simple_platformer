@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppearanceOfCoins : MonoBehaviour
+public class CoinsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _spawnPoint;  
