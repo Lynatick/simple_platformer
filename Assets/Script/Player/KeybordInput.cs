@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KeyboardControllerForPlayer : MonoBehaviour
+public class KeybordInput : MonoBehaviour
 {
     [SerializeField] private Mover _playerMover;
 
@@ -8,19 +8,19 @@ public class KeyboardControllerForPlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            _playerMover.MoveAndDirection("Walk", "Right");
+            _playerMover.Movement(Mover.MoveState.Walk, "Right");
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _playerMover.MoveAndDirection("Walk", "Left");
+            _playerMover.Movement(Mover.MoveState.Walk, "Left");
         }
         if (Input.GetKey(KeyCode.X))
         {
-            _playerMover.MoveAndDirection("Run", "Right");
+            _playerMover.Movement(Mover.MoveState.Run, "Right");
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            _playerMover.MoveAndDirection("Run", "Left");
+            _playerMover.Movement(Mover.MoveState.Run, "Left");
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

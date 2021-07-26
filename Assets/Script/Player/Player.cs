@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(KeyboardControllerForPlayer))]
+[RequireComponent(typeof(KeybordInput))]
 [RequireComponent(typeof(Mover))]
-[RequireComponent(typeof(CollectionOfItems))]
-[RequireComponent(typeof(ViewCountCoins))]
+[RequireComponent(typeof(ItemCollector))]
+[RequireComponent(typeof(CoinCountView))]
 public class Player : MonoBehaviour
 {
 

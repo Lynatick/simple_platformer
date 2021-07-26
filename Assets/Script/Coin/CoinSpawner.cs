@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinsSpawner : MonoBehaviour
+public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _spawnPoint;  
     [SerializeField] private float _seconds;
-
 
     private float _elapsedTime = 0;
 
@@ -20,7 +19,4 @@ public class CoinsSpawner : MonoBehaviour
             Instantiate(_coinPrefab, _spawnPoint.position,_spawnPoint.rotation,_spawnPoint);
         }
     }
-
-
-
 }

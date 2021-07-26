@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class ViewCountCoins : MonoBehaviour
+public class CoinCountView : MonoBehaviour
 {
-    [SerializeField] private CollectionOfItems _items;
+    [SerializeField] private ItemCollector _items;
     [SerializeField] private TMP_Text _text;
 
     private void OnEnable()

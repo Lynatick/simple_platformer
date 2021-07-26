@@ -6,7 +6,7 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _jumpForce;
 
-    private string _moveState;
+    private MoveState _moveState = MoveState.Idle;
     private string _directionState;
     private int _localeScaleX = 1;
     private Transform _transform;
@@ -21,12 +21,11 @@ public class Mover : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _directionState = transform.localScale.x > 0 ? "Left" : "Right";
-        _moveState = "Idle";
     }
 
-    public void MoveAndDirection(string movement, string direction)
+    public void Movement(MoveState movement, string direction)
     {
-        if (_moveState != "Jump")
+        if (_moveState != MoveState.Jump)
         {
             _moveState = movement;
             if (_directionState != direction)
@@ -43,7 +42,7 @@ public class Mover : MonoBehaviour
             else
                 _transform.localScale = new Vector2(_transform.localScale.x, _transform.localScale.y);
             _time = _cooldown;
-            _animator.Play(_moveState);
+            _animator.Play(_moveState.ToString());
         }
     }
 
@@ -63,30 +62,38 @@ public class Mover : MonoBehaviour
 
     public void Jump()
     {
-        if (_moveState != "Jump")
+        if (_moveState != MoveState.Jump)
         {
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
-            _moveState = "Jump";
-            _animator.Play(_moveState);
+            _moveState = MoveState.Jump;
+            _animator.Play(_moveState.ToString());
         }
     }
 
     private void Idle()
     {
-        _moveState = "Idle";
-        _animator.Play(_moveState);
+        _moveState = MoveState.Idle;
+        _animator.Play(_moveState.ToString());
     }
 
     private void Update()
     {
-        if (_moveState == "Jump")
+        if (_moveState == MoveState.Jump)
         {
             if (_rigidbody.velocity == Vector2.zero)
                 Idle();
         }
-        else if (_moveState == "Walk")
+        else if (_moveState == MoveState.Walk)
             Move(_walkSpeed);
-        else if (_moveState == "Run")
+        else if (_moveState == MoveState.Run)
             Move(_runSpeed);
+    }
+
+    public enum MoveState
+    {
+        Idle,
+        Jump,
+        Walk,
+        Run
     }
 }

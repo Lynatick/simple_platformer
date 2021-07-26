@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollectionOfItems : MonoBehaviour
+public class ItemCollector : MonoBehaviour
 {
     private int _coin;
     private string[] _itemsToCollect = { "Coin" };
