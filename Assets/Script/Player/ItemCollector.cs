@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class ItemCollector : MonoBehaviour
 {
     private int _coin;
-    private string[] _itemsToCollect = { "Coin" };
 
     public event UnityAction<int> CountChanged;
 
@@ -16,11 +15,10 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (var value in _itemsToCollect)
-            if (collision.gameObject)
-            {
-                IncreaseCoins();
-                Destroy(collision.gameObject);
-            }
+        if (collision.gameObject)
+        {
+            IncreaseCoins();
+            Destroy(collision.gameObject);
+        }
     }
 }

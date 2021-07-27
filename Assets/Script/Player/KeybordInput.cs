@@ -1,30 +1,53 @@
 using UnityEngine;
+using static Mover;
 
 public class KeybordInput : MonoBehaviour
 {
     [SerializeField] private Mover _playerMover;
+    [SerializeField] private Animator _animator;
+
+    private MoveState _moveJump;
+
+    private void Start()
+    {
+        _moveJump = MoveState.Jump;
+    }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.anyKey)
         {
-            _playerMover.ChangeOfPosition(Mover.MoveState.Walk, Mover.DirectionState.Right);
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                _animator.AnimatorPlay(MoveState.Walk);
+                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Right);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                _animator.AnimatorPlay(MoveState.Walk);
+                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Left);
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                _animator.AnimatorPlay(MoveState.Run);
+                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Right);
+            }
+            if (Input.GetKey(KeyCode.Z))
+            {
+                _animator.AnimatorPlay(MoveState.Run);
+                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Left);
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _playerMover.Jump();
+                _animator.AnimatorPlay(MoveState.Jump);
+            }
         }
-        if (Input.GetKey(KeyCode.A))
+        else
         {
-            _playerMover.ChangeOfPosition(Mover.MoveState.Walk, Mover.DirectionState.Left);
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            _playerMover.ChangeOfPosition(Mover.MoveState.Run, Mover.DirectionState.Right);
-        }
-        if (Input.GetKey(KeyCode.Z))
-        {
-            _playerMover.ChangeOfPosition(Mover.MoveState.Run, Mover.DirectionState.Left);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _playerMover.Jump();
+            _animator.AnimatorPlay(MoveState.Idle);
+            _playerMover.Idle();
         }
     }
 }

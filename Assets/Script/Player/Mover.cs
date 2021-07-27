@@ -5,7 +5,6 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private Animation _animator;
 
     private MoveState _moveState = MoveState.Idle;
     private DirectionState _directionState = DirectionState.Left;
@@ -41,7 +40,6 @@ public class Mover : MonoBehaviour
             else
                 _transform.localScale = new Vector2(_transform.localScale.x, _transform.localScale.y);
             _time = _cooldown;
-            _animator.Animat(_moveState.ToString());
         }
     }
 
@@ -65,14 +63,12 @@ public class Mover : MonoBehaviour
         {
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
             _moveState = MoveState.Jump;
-            _animator.Animat(_moveState.ToString());
         }
     }
 
-    private void Idle()
+    public void Idle()
     {
         _moveState = MoveState.Idle;
-        _animator.Animat(_moveState.ToString());
     }
 
     private void Update()

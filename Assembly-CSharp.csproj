@@ -53,14 +53,14 @@
     <UnityVersion>2020.3.14f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Player\Animator.cs" />
     <Compile Include="Assets\Script\Coin\CoinCountView.cs" />
-    <Compile Include="Assets\Script\Warioir\WayPointMovement.cs" />
+    <Compile Include="Assets\Script\Warioir\MoverByPoints.cs" />
     <Compile Include="Assets\Script\Player\KeybordInput.cs" />
     <Compile Include="Assets\Script\Coin\CoinSpawner.cs" />
     <Compile Include="Assets\Script\Player\Mover.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\ItemCollector.cs" />
-    <Compile Include="Assets\Script\Player\Animation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

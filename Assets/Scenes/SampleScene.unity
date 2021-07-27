@@ -710,6 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMover: {fileID: 557757431}
+  _animator: {fileID: 557757432}
 --- !u!114 &557757429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,7 +752,6 @@ MonoBehaviour:
   _walkSpeed: 3
   _runSpeed: 6
   _jumpForce: 12
-  _animator: {fileID: 557757432}
 --- !u!114 &557757432
 MonoBehaviour:
   m_ObjectHideFlags: 0
