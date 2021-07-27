@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\Player\Mover.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\ItemCollector.cs" />
+    <Compile Include="Assets\Script\Player\Animation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

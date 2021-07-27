@@ -8,15 +8,15 @@ public class CoinCountView : MonoBehaviour
 
     private void OnEnable()
     {
-        _items.CoinChanged += OnCoinChanged;
+        _items.CountChanged += OnCountChanged;
     }
 
     private void OnDisable()
     {
-        _items.CoinChanged -= OnCoinChanged;
+        _items.CountChanged -= OnCountChanged;
     }
 
-    private void OnCoinChanged(int coin)
+    private void OnCountChanged(int coin)
     {
         _text.text = coin.ToString();
     }

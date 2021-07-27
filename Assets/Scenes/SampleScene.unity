@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 423274867}
   _seconds: 5
 --- !u!331 &423274869
@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 557757431}
   - component: {fileID: 557757430}
   - component: {fileID: 557757427}
+  - component: {fileID: 557757432}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -750,6 +751,19 @@ MonoBehaviour:
   _walkSpeed: 3
   _runSpeed: 6
   _jumpForce: 12
+  _animator: {fileID: 557757432}
+--- !u!114 &557757432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557757421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303fe43b7891a704c82743f89dcdf6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &695834974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 729281894}
   _seconds: 10
 --- !u!1 &838437466
@@ -1260,7 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 842029387}
   _seconds: 5
 --- !u!1 &874124305

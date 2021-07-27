@@ -10,7 +10,6 @@ public class WayPointMovement : MonoBehaviour
     private Transform _target;
     private int _currentPoint;
     private float _defaultScaleX;
-    private Animator _animatorController;
 
     private void Start()
     {
@@ -24,8 +23,7 @@ public class WayPointMovement : MonoBehaviour
         _target = _points[_currentPoint];
         _targetNext = _points[_currentPoint];
         _defaultScaleX = transform.localScale.x;
-        _animatorController = GetComponent<Animator>();
-        Scale();
+        Movement();
     }
 
     private void Update()
@@ -41,12 +39,12 @@ public class WayPointMovement : MonoBehaviour
                 _currentPoint = 0;
 
             _targetNext = _points[_currentPoint];
-            Scale();
+            Movement();
         }
 
     }
 
-    private void Scale()
+    private void Movement()
     {
         if (transform.position.x > _targetNext.position.x)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);

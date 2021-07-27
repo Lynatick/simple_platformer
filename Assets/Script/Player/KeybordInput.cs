@@ -8,19 +8,19 @@ public class KeybordInput : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            _playerMover.Movement(Mover.MoveState.Walk, "Right");
+            _playerMover.ChangeOfPosition(Mover.MoveState.Walk, Mover.DirectionState.Right);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _playerMover.Movement(Mover.MoveState.Walk, "Left");
+            _playerMover.ChangeOfPosition(Mover.MoveState.Walk, Mover.DirectionState.Left);
         }
         if (Input.GetKey(KeyCode.X))
         {
-            _playerMover.Movement(Mover.MoveState.Run, "Right");
+            _playerMover.ChangeOfPosition(Mover.MoveState.Run, Mover.DirectionState.Right);
         }
         if (Input.GetKey(KeyCode.Z))
         {
-            _playerMover.Movement(Mover.MoveState.Run, "Left");
+            _playerMover.ChangeOfPosition(Mover.MoveState.Run, Mover.DirectionState.Left);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
