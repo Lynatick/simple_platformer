@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Mover : MonoBehaviour
 {
     [SerializeField] private float _walkSpeed;
@@ -9,14 +10,12 @@ public class Mover : MonoBehaviour
     private MoveState _moveState = MoveState.Idle;
     private DirectionState _directionState = DirectionState.Left;
     private int _localeScaleX = 1;
-    private Transform _transform;
     private Rigidbody2D _rigidbody;
     private float _time = 0;
     private float _cooldown = 0.1f;
 
     private void Start()
     {
-        _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _directionState = transform.localScale.x > 0 ? DirectionState.Left : DirectionState.Right;
     }
@@ -31,14 +30,14 @@ public class Mover : MonoBehaviour
                 if (_directionState == DirectionState.Right)
                 {
                     _localeScaleX = transform.localScale.x > 0 ? 1 : -1;
-                    _transform.localScale = new Vector2(-_transform.localScale.x * _localeScaleX, _transform.localScale.y);
+                    transform.localScale = new Vector2(-transform.localScale.x * _localeScaleX, transform.localScale.y);
                 }
 
-                _transform.localScale = new Vector2(-_transform.localScale.x, _transform.localScale.y);
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
                 _directionState = direction;
             }
             else
-                _transform.localScale = new Vector2(_transform.localScale.x, _transform.localScale.y);
+                transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
             _time = _cooldown;
         }
     }

@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.14f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Player\Animator.cs" />
+    <Compile Include="Assets\Script\Player\AnimatorEnemy.cs" />
     <Compile Include="Assets\Script\Coin\CoinCountView.cs" />
     <Compile Include="Assets\Script\Warioir\MoverByPoints.cs" />
     <Compile Include="Assets\Script\Player\KeybordInput.cs" />

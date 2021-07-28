@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 423274867}
-  _seconds: 5
+  _spawnSeconds: 5
 --- !u!331 &423274869
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 729281894}
-  _seconds: 10
+  _spawnSeconds: 10
 --- !u!1 &838437466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 842029387}
-  _seconds: 5
+  _spawnSeconds: 2
 --- !u!1 &874124305
 GameObject:
   m_ObjectHideFlags: 0

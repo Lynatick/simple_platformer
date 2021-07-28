@@ -4,14 +4,7 @@ using static Mover;
 public class KeybordInput : MonoBehaviour
 {
     [SerializeField] private Mover _playerMover;
-    [SerializeField] private Animator _animator;
-
-    private MoveState _moveJump;
-
-    private void Start()
-    {
-        _moveJump = MoveState.Jump;
-    }
+    [SerializeField] private AnimatorEnemy _animator;
 
     private void Update()
     {

@@ -6,14 +6,14 @@ public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _template;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private float _seconds;
+    [SerializeField] private float _spawnSeconds;
 
     private float _elapsedTime = 0;
 
     private void Update()
     {
         _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _seconds)
+        if (_elapsedTime >= _spawnSeconds)
         {
             _elapsedTime = 0;
             Instantiate(_template, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint);

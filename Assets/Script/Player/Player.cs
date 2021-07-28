@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Mover))]
 [RequireComponent(typeof(ItemCollector))]
 [RequireComponent(typeof(CoinCountView))]
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AnimatorEnemy))]
 public class Player : MonoBehaviour
 {
 

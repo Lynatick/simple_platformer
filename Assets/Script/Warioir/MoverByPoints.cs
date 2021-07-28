@@ -23,13 +23,11 @@ public class MoverByPoints : MonoBehaviour
         _target = _points[_currentPoint];
         _targetNext = _points[_currentPoint];
         _defaultScaleX = transform.localScale.x;
-        Movement();
+        Move();
     }
 
     private void Update()
     {
-        _target = _points[_currentPoint];
-
         transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
 
         if (transform.position.x == _target.position.x)
@@ -39,16 +37,18 @@ public class MoverByPoints : MonoBehaviour
                 _currentPoint = 0;
 
             _targetNext = _points[_currentPoint];
-            Movement();
+            Move();
         }
 
     }
 
-    private void Movement()
+    private void Move()
     {
         if (transform.position.x > _targetNext.position.x)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         else
             transform.localScale = new Vector2(_defaultScaleX, transform.localScale.y);
+
+        _target = _points[_currentPoint];
     }
 }

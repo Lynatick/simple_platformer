@@ -3,14 +3,14 @@ using UnityEngine.Events;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int _coin;
+    private int _coinCount;
 
     public event UnityAction<int> CountChanged;
 
     public void IncreaseCoins()
     {
-        _coin++;
-        CountChanged?.Invoke(_coin);
+        _coinCount++;
+        CountChanged?.Invoke(_coinCount);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
