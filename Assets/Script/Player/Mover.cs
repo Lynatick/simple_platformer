@@ -49,10 +49,7 @@ public class Mover : MonoBehaviour
             Idle();
         else
         {
-            if (_directionState == DirectionState.Right)
-                _rigidbody.velocity = new Vector2(speed, _rigidbody.velocity.y);
-            else
-                _rigidbody.velocity = new Vector2(-speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = ((_directionState == DirectionState.Right ? Vector2.right : -Vector2.right) * speed *10 * Time.deltaTime);
         }
     }
 
