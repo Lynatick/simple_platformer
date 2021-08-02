@@ -10,7 +10,7 @@ public class PlayerAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void AnimatorPlay(Mover.MoveState _moveState)
+    public void AnimatorPlay(PlayerMover.MoveState _moveState)
     {
         _animator.Play(_moveState.ToString());
     }

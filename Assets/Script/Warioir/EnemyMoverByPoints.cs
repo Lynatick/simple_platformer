@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoverByPoints : MonoBehaviour
+public class EnemyMoverByPoints : MonoBehaviour
 {
     [SerializeField] private Transform _path;
     [SerializeField] private float _speed;

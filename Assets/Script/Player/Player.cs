@@ -1,11 +1,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(KeybordInput))]
-[RequireComponent(typeof(Mover))]
+[RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(ItemCollector))]
 [RequireComponent(typeof(CoinCountView))]
 [RequireComponent(typeof(PlayerAnimator))]
-[RequireComponent(typeof(CharacterAction))]
+[RequireComponent(typeof(PlayerCharacterAction))]
 public class Player : MonoBehaviour
 {
 

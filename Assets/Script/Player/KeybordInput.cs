@@ -1,10 +1,10 @@
 using UnityEngine;
-using static CharacterAction;
+using static PlayerCharacterAction;
 
-[RequireComponent(typeof(CharacterAction))]
+[RequireComponent(typeof(PlayerCharacterAction))]
 public class KeybordInput : MonoBehaviour
 {
-    [SerializeField] private CharacterAction _action;
+    [SerializeField] private PlayerCharacterAction _action;
 
     private void Update()
     {

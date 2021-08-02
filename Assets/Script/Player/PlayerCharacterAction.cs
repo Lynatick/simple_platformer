@@ -1,11 +1,10 @@
 using UnityEngine;
-using static CharacterAction;
-using static Mover;
+using static PlayerMover;
 
 [RequireComponent(typeof(PlayerAnimator))]
-public class CharacterAction : MonoBehaviour
+public class PlayerCharacterAction : MonoBehaviour
 {
-    [SerializeField] private Mover _playerMover;
+    [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerAnimator _animator;
 
     public void Action(Simbols value)
