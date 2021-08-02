@@ -1,46 +1,29 @@
 using UnityEngine;
-using static Mover;
+using static CharacterAction;
 
+[RequireComponent(typeof(CharacterAction))]
 public class KeybordInput : MonoBehaviour
 {
-    [SerializeField] private Mover _playerMover;
-    [SerializeField] private AnimatorEnemy _animator;
+    [SerializeField] private CharacterAction _action;
 
     private void Update()
     {
         if (Input.anyKey)
         {
-
             if (Input.GetKey(KeyCode.D))
-            {
-                _animator.AnimatorPlay(MoveState.Walk);
-                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Right);
-            }
+                _action.Action(Simbols.D);
             if (Input.GetKey(KeyCode.A))
-            {
-                _animator.AnimatorPlay(MoveState.Walk);
-                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Left);
-            }
+                _action.Action(Simbols.A);
             if (Input.GetKey(KeyCode.X))
-            {
-                _animator.AnimatorPlay(MoveState.Run);
-                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Right);
-            }
+                _action.Action(Simbols.X);
             if (Input.GetKey(KeyCode.Z))
-            {
-                _animator.AnimatorPlay(MoveState.Run);
-                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Left);
-            }
+                _action.Action(Simbols.Z);
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _playerMover.Jump();
-                _animator.AnimatorPlay(MoveState.Jump);
-            }
+                _action.Action(Simbols.Space);
         }
         else
         {
-            _animator.AnimatorPlay(MoveState.Idle);
-            _playerMover.Idle();
+            _action.Action(Simbols.AnyKey);
         }
     }
 }
