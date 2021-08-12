@@ -14,10 +14,6 @@ public class KeybordInput : MonoBehaviour
                 _action.Action(Simbols.D);
             if (Input.GetKey(KeyCode.A))
                 _action.Action(Simbols.A);
-            if (Input.GetKey(KeyCode.X))
-                _action.Action(Simbols.X);
-            if (Input.GetKey(KeyCode.Z))
-                _action.Action(Simbols.Z);
             if (Input.GetKeyDown(KeyCode.Space))
                 _action.Action(Simbols.Space);
         }

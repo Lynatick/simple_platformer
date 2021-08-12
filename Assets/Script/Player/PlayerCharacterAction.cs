@@ -9,27 +9,21 @@ public class PlayerCharacterAction : MonoBehaviour
 
     public void Action(Simbols value)
     {
+        MoveState run = MoveState.Run;
+
         switch (value)
         {
             case Simbols.D:
-                _animator.AnimatorPlay(MoveState.Walk);
-                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Right);
+                _animator.AnimatorPlay(run);
+                _playerMover.MoveRight(run);
                 break;
             case Simbols.A:
-                _animator.AnimatorPlay(MoveState.Walk);
-                _playerMover.ChangeOfPosition(MoveState.Walk, DirectionState.Left);
-                break;
-            case Simbols.X:
-                _animator.AnimatorPlay(MoveState.Run);
-                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Right);
-                break;
-            case Simbols.Z:
-                _animator.AnimatorPlay(MoveState.Run);
-                _playerMover.ChangeOfPosition(MoveState.Run, DirectionState.Left);
+                _animator.AnimatorPlay(run);
+                _playerMover.MoveLeft(run);
                 break;
             case Simbols.Space:
-                _playerMover.Jump();
                 _animator.AnimatorPlay(MoveState.Jump);
+                _playerMover.Jump();
                 break;
             default:
                 _animator.AnimatorPlay(MoveState.Idle);
@@ -42,8 +36,6 @@ public class PlayerCharacterAction : MonoBehaviour
     {
         A,
         D,
-        Z,
-        X,
         Space,
         AnyKey
     }

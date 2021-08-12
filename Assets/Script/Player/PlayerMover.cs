@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _jumpForce;
 
@@ -20,11 +20,12 @@ public class PlayerMover : MonoBehaviour
         _directionState = transform.localScale.x > 0 ? DirectionState.Left : DirectionState.Right;
     }
 
-    public void ChangeOfPosition(MoveState movement, DirectionState direction)
+    private void ChangeOfPosition(MoveState movement, DirectionState direction)
     {
         if (_moveState != MoveState.Jump)
         {
             _moveState = movement;
+
             if (_directionState != direction)
             {
                 if (_directionState == DirectionState.Right)
@@ -32,25 +33,47 @@ public class PlayerMover : MonoBehaviour
                     _localeScaleX = transform.localScale.x > 0 ? 1 : -1;
                     transform.localScale = new Vector2(-transform.localScale.x * _localeScaleX, transform.localScale.y);
                 }
-
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
                 _directionState = direction;
             }
             else
                 transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+
             _time = _cooldown;
         }
     }
 
-    private void Move(float speed)
+    private void MoveRun()
     {
         _time -= Time.deltaTime;
         if (_time <= 0)
             Idle();
         else
         {
-            _rigidbody.velocity = ((_directionState == DirectionState.Right ? Vector2.right : -Vector2.right) * speed *10 * Time.deltaTime);
+            _rigidbody.velocity = ((_directionState == DirectionState.Right ? Vector2.right : -Vector2.right) *
+                _runSpeed);
         }
+    }
+
+    private void Update()
+    {
+        if (_moveState == MoveState.Jump)
+        {
+            if (_rigidbody.velocity == Vector2.zero)
+                Idle();
+        }
+        else if (_moveState == MoveState.Run)
+            MoveRun();
+    }
+
+    public void MoveRight(MoveState run)
+    {
+        ChangeOfPosition(run, DirectionState.Right);
+    }
+
+    public void MoveLeft(MoveState run)
+    {
+        ChangeOfPosition(run, DirectionState.Left);
     }
 
     public void Jump()
@@ -67,28 +90,14 @@ public class PlayerMover : MonoBehaviour
         _moveState = MoveState.Idle;
     }
 
-    private void Update()
-    {
-        if (_moveState == MoveState.Jump)
-        {
-            if (_rigidbody.velocity == Vector2.zero)
-                Idle();
-        }
-        else if (_moveState == MoveState.Walk)
-            Move(_walkSpeed);
-        else if (_moveState == MoveState.Run)
-            Move(_runSpeed);
-    }
-
     public enum MoveState
     {
         Idle,
         Jump,
-        Walk,
         Run
     }
 
-    public enum DirectionState
+    private enum DirectionState
     {
         Right,
         Left
