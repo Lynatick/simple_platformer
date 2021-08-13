@@ -56,13 +56,12 @@
     <Compile Include="Assets\Script\Coin\CoinCountView.cs" />
     <Compile Include="Assets\Script\Warioir\EnemyMoverByPoints.cs" />
     <Compile Include="Assets\Script\Player\KeybordInput.cs" />
-    <Compile Include="Assets\Script\Player\PlayerCharacterAction.cs" />
     <Compile Include="Assets\Script\Coin\CoinSpawner.cs" />
     <Compile Include="Assets\Script\Player\PlayerMover.cs" />
+    <Compile Include="Assets\Script\Coin\Coin.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\ItemCollector.cs" />
     <Compile Include="Assets\Script\Player\PlayerAnimator.cs" />
-    <Compile Include="Assets\Script\Coin\Coin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

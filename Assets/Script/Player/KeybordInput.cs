@@ -1,25 +1,38 @@
 using UnityEngine;
-using static PlayerCharacterAction;
+using static PlayerMover;
 
-[RequireComponent(typeof(PlayerCharacterAction))]
+[RequireComponent(typeof(PlayerAnimator))]
 public class KeybordInput : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacterAction _action;
+    [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private PlayerAnimator _animator;
 
     private void Update()
     {
+        MoveState run = MoveState.Run;
+
         if (Input.anyKey)
         {
             if (Input.GetKey(KeyCode.D))
-                _action.Action(Simbols.D);
+            {
+                _animator.AnimatorPlay(run);
+                _playerMover.MoveRight(run);
+            }
             if (Input.GetKey(KeyCode.A))
-                _action.Action(Simbols.A);
+            {
+                _animator.AnimatorPlay(run);
+                _playerMover.MoveLeft(run);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
-                _action.Action(Simbols.Space);
+            {
+                _animator.AnimatorPlay(MoveState.Jump);
+                _playerMover.Jump();
+            }
         }
         else
         {
-            _action.Action(Simbols.AnyKey);
+            _animator.AnimatorPlay(MoveState.Idle);
+            _playerMover.Idle();
         }
     }
 }

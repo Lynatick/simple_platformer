@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ItemCollector))]
 [RequireComponent(typeof(CoinCountView))]
 [RequireComponent(typeof(PlayerAnimator))]
-[RequireComponent(typeof(PlayerCharacterAction))]
+
 public class Player : MonoBehaviour
 {
-
 }
