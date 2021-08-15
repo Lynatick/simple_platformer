@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using static PlayerMover;
 
 [RequireComponent(typeof(PlayerAnimator))]
@@ -7,32 +8,39 @@ public class KeybordInput : MonoBehaviour
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerAnimator _animator;
 
+    private MoveState _moveState;
+    private DirectionState _directionState = DirectionState.Left;
+
+    public event UnityAction<MoveState> AnimatorPlay;
+    public event UnityAction<MoveState, DirectionState> MoveState;
+
     private void Update()
     {
-        MoveState run = MoveState.Run;
-
         if (Input.anyKey)
         {
             if (Input.GetKey(KeyCode.D))
             {
-                _animator.AnimatorPlay(run);
-                _playerMover.MoveRight(run);
+                _moveState = PlayerMover.MoveState.Run;
+                _directionState = DirectionState.Right;
+                MoveState?.Invoke(_moveState, _directionState);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                _animator.AnimatorPlay(run);
-                _playerMover.MoveLeft(run);
+                _moveState = PlayerMover.MoveState.Run;
+                _directionState = DirectionState.Left;
+                MoveState?.Invoke(_moveState, _directionState);
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _animator.AnimatorPlay(MoveState.Jump);
-                _playerMover.Jump();
+                _moveState = PlayerMover.MoveState.Jump;
+                MoveState?.Invoke(_moveState, _directionState);
             }
         }
         else
         {
-            _animator.AnimatorPlay(MoveState.Idle);
-            _playerMover.Idle();
+            _moveState = PlayerMover.MoveState.Idle;
+            MoveState?.Invoke(_moveState, _directionState);
         }
+        AnimatorPlay?.Invoke(_moveState);
     }
 }

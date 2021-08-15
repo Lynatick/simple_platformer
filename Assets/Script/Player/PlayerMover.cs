@@ -6,6 +6,7 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private KeybordInput _input;
 
     private MoveState _moveState = MoveState.Idle;
     private DirectionState _directionState = DirectionState.Left;
@@ -18,6 +19,34 @@ public class PlayerMover : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _directionState = transform.localScale.x > 0 ? DirectionState.Left : DirectionState.Right;
+    }
+
+    private void OnEnable()
+    {
+        _input.MoveState += Mover;
+    }
+
+    private void OnDisable()
+    {
+        _input.MoveState -= Mover;
+    }
+
+    private void Mover(MoveState _moveState, DirectionState _directionState)
+    {
+        switch (_moveState)
+        {
+            case MoveState.Idle:
+                Idle();
+                break;
+            case MoveState.Jump:
+                Jump();
+                break;
+            case MoveState.Run:
+                ChangeOfPosition(_moveState, _directionState);
+                break;
+            default:
+                break;
+        }
     }
 
     private void ChangeOfPosition(MoveState movement, DirectionState direction)
@@ -66,17 +95,7 @@ public class PlayerMover : MonoBehaviour
             MoveRun();
     }
 
-    public void MoveRight(MoveState run)
-    {
-        ChangeOfPosition(run, DirectionState.Right);
-    }
-
-    public void MoveLeft(MoveState run)
-    {
-        ChangeOfPosition(run, DirectionState.Left);
-    }
-
-    public void Jump()
+    private void Jump()
     {
         if (_moveState != MoveState.Jump)
         {
@@ -85,7 +104,7 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    public void Idle()
+    private void Idle()
     {
         _moveState = MoveState.Idle;
     }
@@ -97,7 +116,7 @@ public class PlayerMover : MonoBehaviour
         Run
     }
 
-    private enum DirectionState
+    public enum DirectionState
     {
         Right,
         Left
