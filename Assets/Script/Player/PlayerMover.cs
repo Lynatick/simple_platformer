@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -8,17 +7,17 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private KeybordInput _input;
 
-    private MoveState _moveState = MoveState.Idle;
-    private DirectionState _directionState = DirectionState.Left;
+    private Enums.MoveState _moveState = Enums.MoveState.Idle;
+    private Enums.DirectionState _directionState = Enums.DirectionState.Left;
     private int _localeScaleX = 1;
     private Rigidbody2D _rigidbody;
     private float _time = 0;
-    private float _cooldown = 0.1f;
+    private readonly float _cooldown = 0.1f;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _directionState = transform.localScale.x > 0 ? DirectionState.Left : DirectionState.Right;
+        _directionState = transform.localScale.x > 0 ? Enums.DirectionState.Left : Enums.DirectionState.Right;
     }
 
     private void OnEnable()
@@ -31,33 +30,31 @@ public class PlayerMover : MonoBehaviour
         _input.MoveState -= Mover;
     }
 
-    private void Mover(MoveState _moveState, DirectionState _directionState)
+    private void Mover(Enums.MoveState _moveState, Enums.DirectionState _directionState)
     {
         switch (_moveState)
         {
-            case MoveState.Idle:
-                Idle();
-                break;
-            case MoveState.Jump:
-                Jump();
-                break;
-            case MoveState.Run:
+            case Enums.MoveState.Run:
                 ChangeOfPosition(_moveState, _directionState);
                 break;
-            default:
+            case Enums.MoveState.Idle:
+                Idle();
+                break;
+            case Enums.MoveState.Jump:
+                Jump();
                 break;
         }
     }
 
-    private void ChangeOfPosition(MoveState movement, DirectionState direction)
+    private void ChangeOfPosition(Enums.MoveState movement, Enums.DirectionState direction)
     {
-        if (_moveState != MoveState.Jump)
+        if (_moveState != Enums.MoveState.Jump)
         {
             _moveState = movement;
 
             if (_directionState != direction)
             {
-                if (_directionState == DirectionState.Right)
+                if (_directionState == Enums.DirectionState.Right)
                 {
                     _localeScaleX = transform.localScale.x > 0 ? 1 : -1;
                     transform.localScale = new Vector2(-transform.localScale.x * _localeScaleX, transform.localScale.y);
@@ -79,46 +76,33 @@ public class PlayerMover : MonoBehaviour
             Idle();
         else
         {
-            _rigidbody.velocity = ((_directionState == DirectionState.Right ? Vector2.right : -Vector2.right) *
+            _rigidbody.velocity = ((_directionState == Enums.DirectionState.Right ? Vector2.right : -Vector2.right) *
                 _runSpeed);
         }
     }
 
     private void Update()
     {
-        if (_moveState == MoveState.Jump)
+        if (_moveState == Enums.MoveState.Jump)
         {
             if (_rigidbody.velocity == Vector2.zero)
                 Idle();
         }
-        else if (_moveState == MoveState.Run)
+        else if (_moveState == Enums.MoveState.Run)
             MoveRun();
     }
 
     private void Jump()
     {
-        if (_moveState != MoveState.Jump)
+        if (_moveState != Enums.MoveState.Jump)
         {
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
-            _moveState = MoveState.Jump;
+            _moveState = Enums.MoveState.Jump;
         }
     }
 
     private void Idle()
     {
-        _moveState = MoveState.Idle;
-    }
-
-    public enum MoveState
-    {
-        Idle,
-        Jump,
-        Run
-    }
-
-    public enum DirectionState
-    {
-        Right,
-        Left
+        _moveState = Enums.MoveState.Idle;
     }
 }

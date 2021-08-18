@@ -23,7 +23,7 @@ public class PlayerAnimator : MonoBehaviour
         _input.AnimatorPlay -= AnimatorPlay;
     }
 
-    private void AnimatorPlay(MoveState _moveState)
+    private void AnimatorPlay(Enums.MoveState _moveState)
     {
         _animator.Play(_moveState.ToString());
     }
