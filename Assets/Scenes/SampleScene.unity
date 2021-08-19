@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 423274869}
   - component: {fileID: 423274868}
   m_Layer: 8
-  m_Name: Spawn2 (1)
+  m_Name: Spawn3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2190465576251095226, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 423274867}
   _spawnSeconds: 5
 --- !u!331 &423274869
@@ -748,6 +748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b40e97c82afc1b40911285395af9a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _runSpeed: 3
+  _jumpForce: 10
+  _input: {fileID: 557757428}
 --- !u!114 &557757432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2190465576251095226, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 729281894}
   _spawnSeconds: 10
 --- !u!1 &838437466
@@ -1283,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baed282aff71d9546ad3958d6847f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _template: {fileID: 2714317265614783182, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
+  _template: {fileID: 2190465576251095226, guid: 897cb80a7b9e93e44a4e27fa062f49b4, type: 3}
   _spawnPoint: {fileID: 842029387}
   _spawnSeconds: 2
 --- !u!1 &874124305

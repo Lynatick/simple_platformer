@@ -15,15 +15,15 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.AnimatorPlay += AnimatorPlay;
+        _input.AnimatorPlay += Play;
     }
 
     private void OnDisable()
     {
-        _input.AnimatorPlay -= AnimatorPlay;
+        _input.AnimatorPlay -= Play;
     }
 
-    private void AnimatorPlay(Enums.MoveState _moveState)
+    private void Play(Enums.MoveState _moveState)
     {
         _animator.Play(_moveState.ToString());
     }

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _template;
+    [SerializeField] private Coin _template;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _spawnSeconds;
 
-    private float _elapsedTime = 0;
-
-    private void Update()
+    private void Start()
     {
-        _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _spawnSeconds)
+        StartCoroutine(Spawner());
+    }
+
+    private IEnumerator Spawner()
+    {
+        while (true)
         {
-            _elapsedTime = 0;
+            yield return new WaitForSeconds(_spawnSeconds);
             Instantiate(_template, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint);
         }
     }

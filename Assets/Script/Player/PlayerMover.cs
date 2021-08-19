@@ -22,15 +22,15 @@ public class PlayerMover : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.MoveState += Mover;
+        _input.MoveState += Move;
     }
 
     private void OnDisable()
     {
-        _input.MoveState -= Mover;
+        _input.MoveState -= Move;
     }
 
-    private void Mover(Enums.MoveState _moveState, Enums.DirectionState _directionState)
+    private void Move(Enums.MoveState _moveState, Enums.DirectionState _directionState)
     {
         switch (_moveState)
         {
@@ -69,7 +69,18 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    private void MoveRun()
+    private void Update()
+    {
+        if (_moveState == Enums.MoveState.Jump)
+        {
+            if (_rigidbody.velocity == Vector2.zero)
+                Idle();
+        }
+        else if (_moveState == Enums.MoveState.Run)
+            Run();
+    }
+
+    private void Run()
     {
         _time -= Time.deltaTime;
         if (_time <= 0)
@@ -79,17 +90,6 @@ public class PlayerMover : MonoBehaviour
             _rigidbody.velocity = ((_directionState == Enums.DirectionState.Right ? Vector2.right : -Vector2.right) *
                 _runSpeed);
         }
-    }
-
-    private void Update()
-    {
-        if (_moveState == Enums.MoveState.Jump)
-        {
-            if (_rigidbody.velocity == Vector2.zero)
-                Idle();
-        }
-        else if (_moveState == Enums.MoveState.Run)
-            MoveRun();
     }
 
     private void Jump()
